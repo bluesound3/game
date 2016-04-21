@@ -108,18 +108,22 @@ $(document).ready(function(){
    }
     
     
+        
+    var kirbyStock = 3
+    
+    
   var touch = function(){
     if (kirbyObject.x - sheikObject.x >=-110 && kirbyObject.x - sheikObject.x <= 120/*&& key ===enter_key*/ ){
     
       
+    kirbyStock = kirbyStock - 1;
     
+      console.log("Kirby has " + kirbyStock + " left");
     
-     alert("Square up");
    
      }
-    
-    
-    
+
+ 
   };
   
                      
