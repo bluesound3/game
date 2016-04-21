@@ -135,7 +135,13 @@ var RemoveLife = function(){
   
      console.log("Kirby has " + kirbyStock + " left");
 
-  
+      console.log(kirbyStockImage,kirbyStockImage2,kirbyStockImage3);
+      
+      // if(kirbyStock < 3){
+        
+      //   kirbyStockImage.src = 
+        
+      // };
   
   
 }
@@ -172,8 +178,6 @@ var RemoveLife = function(){
 
 
 
-  var kirbyStockImage = new Image();
-  var kirbyStockImage = new Image();
   var kirbyStockImage = new Image();
   kirbyStockImage.src = "http://i454.photobucket.com/albums/qq262/Starscreamer95/SmashBrosKirby.png"
   var kirbyStockImage2 = new Image();
