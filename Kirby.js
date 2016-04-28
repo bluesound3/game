@@ -5,8 +5,8 @@ $(document).ready(function() {
 
   var canvas = document.createElement("canvas");
   var context = canvas.getContext("2d");
-  canvas.width = 600;
-  canvas.height = 600;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
   document.body.appendChild(canvas);
   document.onkeydown = function(key) {
     touch(key.keyCode);
@@ -27,7 +27,7 @@ $(document).ready(function() {
   var kirbyObject = {};
   kirby.src = "http://vignette3.wikia.nocookie.net/spritechronicles/images/5/5c/Kirby.png/revision/latest?cb=20101010225540";
 
-  kirbyObject.x = 300;
+  kirbyObject.x = 1100;
   kirbyObject.y = 300;
 
   var upKey = 38;
@@ -66,7 +66,7 @@ $(document).ready(function() {
   var sheikObject = {};
   sheik.src = "http://rs274.pbsrc.com/albums/jj273/Brawlkurosaki/abysswolf%20sprites/thsheik.gif~c200";
 
-  sheikObject.x = 100;
+  sheikObject.x = 600;
   sheikObject.y = 100;
 
   var up_Key = 87;
@@ -104,7 +104,7 @@ $(document).ready(function() {
       
      */
   var sheik_Attack_key = 49;
-  var Kirby_Attack_key = 17;
+  var Kirby_Attack_key = 76;
 
 
 
@@ -116,7 +116,7 @@ $(document).ready(function() {
 
 
   var kirbyStock = 3;
-
+  var SheikStock =3;
 
   var touch = function(a) {
     if (kirbyObject.x - sheikObject.x >= -110 && kirbyObject.x - sheikObject.x <= 120&& a == sheik_Attack_key ) {
@@ -124,8 +124,12 @@ $(document).ready(function() {
      
       kirbyStock = kirbyStock - 1;
 
-       RemoveLife();
 
+
+    }else if(kirbyObject.x - sheikObject.x >= -110 && kirbyObject.x - sheikObject.x <= 120&& a == Kirby_Attack_key){
+      
+      SheikStock = SheikStock - 1;
+      
     }
 
 
@@ -153,7 +157,7 @@ var RemoveLife = function(){
 
   var gravity = function() {
     var kGravityScale = 1;
-    var kGroundHeight = 300;
+    var kGroundHeight = 460;
     if (kirbyObject.y < canvas.height - kGroundHeight) {
       kirbyObject.y += kGravityScale;
     }
@@ -190,15 +194,8 @@ var RemoveLife = function(){
   var sheikStockImage3 = new Image();
   sheikStockImage3.src = "http://vignette1.wikia.nocookie.net/supersmashbrosfanon/images/6/64/271px-HW_Sheik.png/revision/latest?cb=20140825133505"
 
-  // var fight = function(){
-
-
-  //   if 
-
-
-
-  // }
-
+ var Background = new Image();
+ Background.src = "http://i.imgur.com/lUGHFtO.jpg"
 
 
 
@@ -209,11 +206,26 @@ var RemoveLife = function(){
     gravity();
     context.drawImage(kirby, kirbyObject.x, kirbyObject.y);
     context.drawImage(sheik, sheikObject.x, sheikObject.y);
+   
+    if(SheikStock == 3){
      context.drawImage(sheikStockImage, 270, 0, 80, 80);
     context.drawImage(sheikStockImage2, 360, 0, 80, 80);
     context.drawImage(sheikStockImage3, 450, 0, 80, 80);
   
-      context.fillRect(0, 450, 600, 20);
+    }else if(SheikStock == 2){
+      
+      context.drawImage(sheikStockImage, 270, 0, 80, 80);
+    context.drawImage(sheikStockImage2, 360, 0, 80, 80);
+      
+    }else if(SheikStock == 1){
+      
+      context.drawImage(sheikStockImage, 270, 0, 80, 80);
+    
+    }
+      
+  
+    
+    
     if(kirbyStock == 3){
         
     context.drawImage(kirbyStockImage, 0, 0, 80, 80);
@@ -235,10 +247,8 @@ var RemoveLife = function(){
     
   }
 
+
 };
-
-
-
 
 
   var main = function() {
@@ -247,7 +257,7 @@ var RemoveLife = function(){
     render();
     window.requestAnimationFrame(main);
 
-  }
+  };
 
 
   main();
