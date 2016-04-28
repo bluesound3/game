@@ -137,14 +137,16 @@ var RemoveLife = function(){
 
       console.log(kirbyStockImage,kirbyStockImage2,kirbyStockImage3);
       
-      // if(kirbyStock < 3){
+         debugger;
+      
+     if(kirbyStock < 3){
         
-      //   kirbyStockImage.src = 
+       kirbyStockImage.remove();
         
-      // };
+      }
   
   
-}
+};
 
 
 
