@@ -115,11 +115,11 @@ $(document).ready(function() {
 
 
 
-  var kirbyStock = 3
+  var kirbyStock = 3;
 
 
-  var touch = function() {
-    if (kirbyObject.x - sheikObject.x >= -110 && kirbyObject.x - sheikObject.x <= 120 /*&& key ===enter_key*/ ) {
+  var touch = function(a) {
+    if (kirbyObject.x - sheikObject.x >= -110 && kirbyObject.x - sheikObject.x <= 120&& a == sheik_Attack_key ) {
 
      
       kirbyStock = kirbyStock - 1;
@@ -137,13 +137,6 @@ var RemoveLife = function(){
 
       console.log(kirbyStockImage,kirbyStockImage2,kirbyStockImage3);
       
-         debugger;
-      
-     if(kirbyStock < 3){
-        
-       kirbyStockImage.remove();
-        
-      }
   
   
 };
@@ -216,15 +209,33 @@ var RemoveLife = function(){
     gravity();
     context.drawImage(kirby, kirbyObject.x, kirbyObject.y);
     context.drawImage(sheik, sheikObject.x, sheikObject.y);
+     context.drawImage(sheikStockImage, 270, 0, 80, 80);
+    context.drawImage(sheikStockImage2, 360, 0, 80, 80);
+    context.drawImage(sheikStockImage3, 450, 0, 80, 80);
+  
+      context.fillRect(0, 450, 600, 20);
+    if(kirbyStock == 3){
+        
     context.drawImage(kirbyStockImage, 0, 0, 80, 80);
     context.drawImage(kirbyStockImage2, 90, 0, 80, 80);
     context.drawImage(kirbyStockImage3, 180, 0, 80, 80);
-    context.drawImage(sheikStockImage, 270, 0, 80, 80);
-    context.drawImage(sheikStockImage2, 360, 0, 80, 80);
-    context.drawImage(sheikStockImage3, 450, 0, 80, 80);
-    context.fillRect(0, 450, 600, 20);
-  };
+   
+    
+    }else if(kirbyStock == 2){
+  
+    context.drawImage(kirbyStockImage, 0, 0, 80, 80);
+    context.drawImage(kirbyStockImage2, 90, 0, 80, 80);
+    
+    
+    
+    
+  }else if(kirbyStock == 1){
+    
+     context.drawImage(kirbyStockImage, 0, 0, 80, 80);
+    
+  }
 
+};
 
 
 
